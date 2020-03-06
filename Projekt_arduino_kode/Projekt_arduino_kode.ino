@@ -74,9 +74,9 @@ String brugerKode = "";
 int antalTries = 0;
 void loop(void) {
 
-  while (ble.available()) {
+  while (Serial.available()) {
 
-    int d = ble.read();
+    int d = Serial.read();
     brugerKode += (char)d;
     if (brugerKode.length() == 4) {
       Serial.println(brugerKode);
