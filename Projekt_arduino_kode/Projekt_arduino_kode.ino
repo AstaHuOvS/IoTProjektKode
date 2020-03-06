@@ -53,7 +53,7 @@ void setup(void) {
   ble.verbose(false);
 
   //Module named
-  ble.println("AT+GAPDEVNAME=Asta Test");
+  ble.println("AT+GAPDEVNAME=Testvej 1");
 
   //Wait for the module to respond
   ble.waitForOK();
@@ -74,9 +74,9 @@ String brugerKode = "";
 int antalTries = 0;
 void loop(void) {
 
-  while (Serial.available()) {
+  while (ble.available()) {
 
-    int d = Serial.read();
+    int d = ble.read();
     brugerKode += (char)d;
     if (brugerKode.length() == 4) {
       Serial.println(brugerKode);
@@ -108,10 +108,10 @@ void loop(void) {
       }
     }
 
-   
+
   }
   delay(1000);
-   brugerKode = "";
+  brugerKode = "";
 }
 
 void note(int sound, int duration) {
