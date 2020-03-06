@@ -74,28 +74,9 @@ String brugerKode = "";
 int antalTries = 0;
 void loop(void) {
 
-    char n, inputs[BUFSIZE + 1];
 
-  if (Serial.available())
-  {
-    n = Serial.readBytes(inputs, BUFSIZE);
-    inputs[n] = 0;
-    // Send characters to Bluefruit
-    Serial.print("Sending: ");
-    Serial.println(inputs);
 
-    // Send input data to host via Bluefruit
-    ble.print(inputs);
-  }
-  if (ble.available()) {
-    Serial.print("* "); Serial.print(ble.available()); Serial.println(F(" bytes available from BTLE"));
-  }
-  
-  
-  
-  
-  
-  while (ble.available()) {
+ while (ble.available()) {
 
     int d = ble.read();
     brugerKode += (char)d;
